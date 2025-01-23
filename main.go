@@ -7,6 +7,7 @@ import (
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"github.com/melihozmen9/GoFirebase/handlers"
 )
 
 func main() {
@@ -19,11 +20,7 @@ func main() {
 
 	r := gin.Default()
 
-	r.GET(
-		"/api/health", 
-		func(c *gin.Context) {
-			c.JSON(http.StatusOK, gin.H{"ok":true})
-		})
+	r.GET("/api/health", handlers.HealtCheckHandler())
 
 	r.POST(
 		"/api/health",
